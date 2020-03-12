@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 
 
 public interface IProductService {
-    public abstract Iterable<Product> getAllProducts();
-    public abstract Product saveProduct(Product Product);
-    public abstract Product getProductById(Long ProductId);
-    public abstract void deleteProductById(Long ProductId);
+      Iterable<Product> getAllProducts();
+      Product saveProduct(Product Product);
+      Product getProductById(Long ProductId);
+      void deleteProductById(Long ProductId);
 }

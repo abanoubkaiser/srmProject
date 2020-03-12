@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 
 public interface ISupplierService {
 
-    public abstract Iterable<Supplier> getAllSuppliers();
-    public abstract Supplier saveSupplier(Supplier Supplier);
-    public abstract Supplier getSupplierById(Long SupplierId);
-    public abstract void deleteSupplierById(Long SupplierId);
+    Iterable<Supplier> getAllSuppliers();
+    Supplier saveSupplier(Supplier Supplier);
+    Supplier getSupplierById(Long SupplierId);
+    void deleteSupplierById(Long SupplierId);
 
 }

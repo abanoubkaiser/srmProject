@@ -9,6 +9,7 @@
     <link rel="icon" href="favicon.ico">
     <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/cerulean/bootstrap.min.css" rel="stylesheet" integrity="sha384-EmRcsPP774S9MOi4ywB+JXUWjYnBdyInMzG2XsC5siZEUpexqxOMJW358dCYEjPu" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" th:href="@{/css/master.css}">
+    <productNumber>srm - system</productNumber>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -24,7 +25,7 @@
                     <a class="nav-link" href="/srm/supplier/list">suppliers</a>
                 </li>
                 <li class="nav-item" style="border-left: white 1px solid; padding-left: 2em; padding-right: 2em;">
-                    <a class="nav-link" href="/srm/product/list">suppliers</a>
+                    <a class="nav-link" href="/srm/product/list">products</a>
                 </li>
             </ul>
 
@@ -33,41 +34,74 @@
 
     <div style="padding-top:1em;" class="container">
         <div style="margin-bottom: 1em;">
-            <span style="font-size: 2em; color: #32a5e7;">New supplier</span>
+            <span style="font-size: 2em; color: #32a5e7;">Edit product</span>
         </div>
 
-        <form id="newsupplierForm" method="post" action="/srm/supplier/new" th:object="${supplier}">
+        <form id="newproductForm" method="post" action="/srm/product/new" th:object="${product}">
             <fieldset>
-                <input type="hidden" name="id" th:value="${supplier.supplierId}"/>
+                <input type="hidden" name="productId" th:value="${product.productId}"/>
 
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
-                            <label for="supplierNumber">supplier Number</label>
+                            <label for="productNumber">product Number</label>
 
-                            <input id="supplierNumber" name="supplierNumber" type="number" class="form-control"
-                                   th:value="${supplier.supplierNumber}">
+                            <input id="productNumber" name="productNumber" type="number" class="form-control"
+                                   th:value="${product.productNumber}">
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                     <div class="form-group">
                         <label for="name"> Name</label>
 
-                        <input id="name" name="name" type="text" class="form-control" th:value="${supplier.name}">
+                        <input id="name" name="name" type="text" class="form-control" th:value="${product.name}">
                     </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="contactPhoneNumber">contact PhoneNumber</label>
+                </div>
 
-                            <input id="contactPhoneNumber" name="contactPhoneNumber" type="text" class="form-control" th:value="${supplier.contactPhoneNumber}">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="unitPrice">unit Price</label>
+
+                            <input id="unitPrice" name="unitPrice" type="number" class="form-control"
+                                   th:value="${product.unitPrice}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="quantityInStock"> quantity In Stock</label>
+
+                            <input id="quantityInStock" name="quantityInStock" type="text" class="form-control" th:value="${product.quantityInStock}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="dateSupplied">date Supplied</label>
+
+                            <input id="dateSupplied" name="dateSupplied" type="date" class="form-control"
+                                   th:value="${product.dateSupplied}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label for="supplier">Supplier</label>
+
+                            <select id ="supplier"class="browser-default custom-select" th:field="*{supplier}">
+                                <option value="" selected>Select a supplier</option>
+                                <option  th:value="${supplier.supplierId}" th:each="supplier,iterStat : ${suppliers}" th:text="${supplier.name}" value="" ></option>
+
+                            </select>
                         </div>
                     </div>
                 </div>
 
                 <div style="float:right;">
-                    <a href="/srm/supplier/list" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
-                    <button id="btnSubmit" type="submit" class="btn btn-outline-success">Save supplier</button>
+                    <a href="/srm/product/list" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
+                    <button id="btnSubmit" type="submit" class="btn btn-outline-success">Save product</button>
                 </div>
             </fieldset>
         </form>

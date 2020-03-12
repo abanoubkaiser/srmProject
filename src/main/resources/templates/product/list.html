@@ -65,7 +65,7 @@
                     <td th:text="${product.unitPrice}"></td>
                     <td th:text="${product.quantityInStock}"></td>
                     <td th:text="${product.dateSupplied}"></td>
-                    <td th:text="${product.supplier.name}"></td>
+                    <td th:text="${product.supplier?.name}"></td>
 
                     <td><a th:href="@{'/srm/product/edit/{id}'(id=${product.productId})}">Edit</a></td>
                     <td><a th:href="@{'/srm/product/delete/{id}'(id=${product.productId})}">remove</a></td>

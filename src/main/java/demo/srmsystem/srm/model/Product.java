@@ -16,20 +16,22 @@ public class Product {
     private  Integer quantityInStock;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateSupplied;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private  Supplier supplier;
 
     public Product() {
 
     }
 
-    public Product(Long productNumber, String name, Double unitPrice, Integer quantityInStock, LocalDate dateSupplied, Supplier supplier) {
+
+    public Product(Long productId,Long productNumber, String name, Double unitPrice, Integer quantityInStock, LocalDate dateSupplied, Supplier supplier) {
         this.productNumber = productNumber;
         this.name = name;
         this.unitPrice = unitPrice;
         this.quantityInStock = quantityInStock;
         this.dateSupplied = dateSupplied;
         this.supplier = supplier;
+        this.productId=productId;
     }
 
     public Long getProductId() {
